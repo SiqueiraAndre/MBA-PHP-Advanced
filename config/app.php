@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'BibliotecAí'),
+    'name' => env('APP_NAME', 'Biblioteca da Galera'),
 
     /*
     |--------------------------------------------------------------------------

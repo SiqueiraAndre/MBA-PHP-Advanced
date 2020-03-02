@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <ol class="breadcrumb panel-heading" style="background: #efc050">
+                <ol class="breadcrumb panel-heading" style="background: #F5FDC6">
                     <li class="active" style="color:#616161; font-weight:bold">Empréstimos</li>
                 </ol>
                 <br/><br/>

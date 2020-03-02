@@ -17,6 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware("auth.token")->prefix("/v1")->group(function(){
+Route::middleware("auth:api")->prefix("/v1")->group(function(){
 	Route::get('books', 'Api\\ApiController@books');
+	Route::get('authors', 'Api\\ApiController@authors');
+    Route::get('lendings', 'Api\\ApiController@lendings');
+    Route::post('save_books', 'Api\\ApiController@saveBooks');
 });
