@@ -1,58 +1,53 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Projeto - Biblioteca 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Escopo projeto - Biblioteca ##
 
-## About Laravel
+```
+ Desenvolver sistema para controle de locação de livros na biblioteca, com controle
+de usuários e datas para entrega. Possibilitando o aluguel de mais de um livro por
+aluno e com nível de permissão para cadastro de livros e autores.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+1. Nível de permissão (0 - Aluno/1000 - Administrador);
+2. Aluno = somente locação e devolução de livros,
+Administrador = cadastro, edição e exclusão de livros;
+3. O aluno pode alugar mais de 1 livro;
+4. Os livros devem conter autores e 1 imagem;
+5. Locação (data aluguel, data devolução, data entrega);
+6. Data devolução é fixa em data aluguel + 7 dias;
+7. Um livro pode conter mais de 1 autor;
+8. Uma locação pode conter mais de 1 livro;
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+9. Rotas de API (opcional)
+- GET: todos os livros
+```
+## Ferramentas
+1. PHP
+2. MySQL
+3. Postman
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+## O Sistema - Biblioteca da Galera
 
-## Learning Laravel
+Para começar a utilizar o usuario deverá se logar, caso seja primeiro acesso basta clicar em `Cadastre-se` e preencher as informações necessárias.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+No cadastro de usuário selecionar o "Tipo de Permissão" no qual o usuario vai ter:
+(aluno, role = 0), com acesso somente as seguintes telas:
+- Galeria
+- Meus Empréstimos
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+(administrador, role = 100), com acesso somente as seguintes telas:
+- Galeria
+- Meus Empréstimos
+- Autores
+- Livros
+- Empréstimos
 
-## Laravel Sponsors
+## API
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+Para recuperar todos os livros cadastrados:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
+**Rota:** /api/books
 
-## Contributing
+**Header** necessário para recuperar os livros:
+- `Authorization`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Lembrete: não esqueça de informar o token do usuario a ser utilizado na tabela 'users', na coluna `api_token`, onde o conteudo deste campo será necessario para ter acesso a API.
